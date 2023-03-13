@@ -3,21 +3,27 @@ import { sendEmail } from '../helpers/send-email.helper';
 
 
 class ContactController {
+    /**
+     * Handles the contact form request and sends the email.
+     * 
+     * @param req The request object containing the form data.
+     * @param res The response object to send back the result.
+     * @returns A JSON object with the message or an error message.
+     */
+    async handleContactForm(req: Request, res: Response): Promise<void> {
+        const { name, email, subject, message } = req.body;
 
-    async handleContactForm(req: Request, res: Response) {
+        if (!name || !email || !message) {
+            res.status(400).json({ error: 'All fields are required' });
+            return;
+        }
+
         try {
-            const { name, email, subject, message } = req.body;
-
-            if (!name || !email || !message) {
-                throw new Error('Todos los campos son requeridos');
-            }
-
             await sendEmail(name, email, subject, message);
+            res.status(200).json({ message: 'Message sent successfully' });
 
-            res.status(200).json({ message: 'Mensaje enviado correctamente' });
         } catch (error) {
-            console.log(error);
-            res.status(500).json({ error: 'Error al procesar la solicitud' });
+            res.status(500).json({ error: 'Internal server error' });
         }
     }
 }
