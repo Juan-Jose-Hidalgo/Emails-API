@@ -1,62 +1,42 @@
-# 🚀 ***PassWizard API*** 🧙‍♂️
+# 📧 **Email-Api**
 ### 🇬🇧 [English](../README.md) | 🇪🇸 Español
-PassWizard API es una API REST escrita en TypeScript con Node.js y Express.js. La función de esta API es servir como servidor para la aplicación cliente **PassWizard**, la cual puedes encontrar **[aquí](https://github.com/Juan-Jose-Hidalgo/PassWizard)**. Esta API proporciona diferentes endpoints para que PassWizard pueda gestionar usuarios y contraseñas, incluyendo operaciones CRUD tanto para usuarios como para contraseñas generadas por los usuarios.
+Esta aplicación es una API Rest desarrollada en Node.js y Express.js que tiene como objetivo recibir datos de una solicitud y enviar un correo electrónico a una dirección de correo electrónico específica utilizando la librería Nodemailer.
 
----
-## 🗄️ ***Base de datos***
-La aplicación utiliza PostgreSQL como gestor de base de datos, en su versión 14.7. Si deseas utilizar otro gestor de base de datos, debes modificar el archivo src/database/database.conexion.ts y configurar el objeto dialectOptions para que coincida con las opciones de tu gestor de base de datos. Ejemplo para el uso de mysql:
+##  📝 Requisitos previos
+Node.js v18.13.0 o superior.
+## ⬇️ Instalación
+1. Descargar o clonar el repositorio.
+2. Abrir la carpeta del proyecto en la terminal.
+3. Ejecutar el comando npm install para instalar todas las dependencias.
+## 📤 Uso
+1. Ejecutar el comando npm start para iniciar la aplicación en el puerto especificado en el archivo .env.
+
+2. Enviar una solicitud POST a la dirección http://localhost:puerto/contact/portfolio-form con los siguientes datos en el cuerpo de la solicitud:
+
 ```typescript
-export const sequelize = new Sequelize(`mysql://${user}:${pass}@${host}:${port}/${db}`, {
-  dialect: 'mysql',
-  logging: false
-});
+{
+  "name": "Nombre del remitente",
+  "email": "Correo electrónico del remitente",
+  "subject": "Asunto del correo electrónico",
+  "message": "Cuerpo del mensaje del correo electrónico"
+}
 ```
-La aplicación utiliza el ORM Sequelize, por lo que es compatible con varios gestores de bases de datos como MySQL, SQLite y MariaDB. Para obtener más información sobre cómo configurar Sequelize, consulta la documentación oficial.
+La aplicación enviará un correo electrónico con la información proporcionada a la dirección de correo electrónico especificada en el archivo .env.
 
----
-## 🌐 ***Variables de entorno***
-Para que la aplicación se pueda ejecutar de manera adecuada, es necesario declarar las siguientes variables de entorno en un archivo .env en la raíz del proyecto:
-### **Variables para la conexión a la base de datos**
-- PASSWORDDB: contraseña de la base de datos.
-- PGDATABASE: nombre de la base de datos.
-- PGHOST: nombre del host de la base de datos.
-- PGPASSWORD: contraseña del usuario de la base de datos.
-- PGPORT: puerto en el que está corriendo PostgreSQL.
-- PGUSER: nombre del usuario de la base de datos.
-<br></br>
-### **Variables para la configuración del servidor**
-- PORT: puerto en el que se ejecutará la aplicación.
-- JWT_SECRET: clave secreta para firmar y verificar tokens JWT.
----
+## ⚙️ Configuración
+Antes de ejecutar la aplicación, se deben configurar las siguientes variables de entorno en el archivo .env:
 
-## 🌐 ***Despliegue en Railway***
-Si quieres utilizar esta aplicación en línea, es posible desplegarla en Railway siguiendo los siguientes pasos:
-1. Crea una cuenta en Railway.
-2. Crea un nuevo proyecto en Railway.
-3. Añade una base de datos PostgreSQL a tu proyecto.
-4. Añade un servidor Node.js a tu proyecto.
-5. Declara las variables de entorno necesarias para la aplicación (ver sección anterior).
-6. Configura los puertos y el tipo de servidor.
----
-## 🚀 ***Ejecución local***
-Si prefieres ejecutar la aplicación localmente, puedes hacerlo siguiendo los siguientes pasos:
-1. Clona este repositorio en tu máquina local.
-2. Ejecuta npm install para instalar las dependencias.
-3. Crea una base de datos PostgreSQL en tu máquina local y asegúrate de tener las variables de entorno necesarias (ver sección anterior).
-4. Ejecuta npm run dev para iniciar el servidor en modo de desarrollo.
-5. Si quieres ejecutar el servidor en modo producción, debes ejecutar npm run build y luego npm start.
----
-## 📜 ***Scripts***
-Los siguientes scripts están disponibles en este proyecto:
-- dev: Ejecuta el servidor en modo de desarrollo usando nodemon.
-- build: Compila los archivos TypeScript a JavaScript en la carpeta "dist".
-- start: Ejecuta el servidor en modo producción, utilizando los archivos compilados en la carpeta "dist".
----
+- PORT: El puerto en el que se ejecutará la aplicación.
+- TRANSPORT_USER: El usuario del servicio de correo electrónico.
+- TRANSPORT_PASS: La contraseña del servicio de correo electrónico.
+- RECIPIENT_EMAIL: La dirección de correo electrónico a la que se enviará el mensaje.
+  
+Además, si se desea cambiar el servicio de correo electrónico utilizado, se deberán modificar los parámetros de configuración en el helper sendEmail, ubicado en el archivo src/helpers/email.ts.
 ## ***Datos del autor*** 👨‍💻
-#### 🙋‍♂️ Nombre: Juan José Hidalgo
+#### 🙋‍♂️ Name: Juan José Hidalgo
 #### 🐙 GitHub: https://github.com/Juan-Jose-Hidalgo
-#### 💼 Visita mi perfil en [LinkedIn](https://www.linkedin.com/in/juan-jos%C3%A9-hidalgo-ya%C3%B1ez-854698b4/)
-#### 📨 Correo electrónico: juanhidalgoyanez@gmail.com
+#### 💼 Visit my profile on [LinkedIn](https://www.linkedin.com/in/juan-jos%C3%A9-hidalgo-ya%C3%B1ez-854698b4/)
+#### 📨 Email: contacto@juan-hidalgo.es
 ---
 ## 📝 ***Licencia***
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENCIA](./LICENCIA.md) para más detalles.
