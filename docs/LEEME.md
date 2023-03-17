@@ -36,7 +36,7 @@ Además, si se desea cambiar el servicio de correo electrónico utilizado, se de
 #### 🙋‍♂️ Name: Juan José Hidalgo
 #### 🐙 GitHub: https://github.com/Juan-Jose-Hidalgo
 #### 💼 Visit my profile on [LinkedIn](https://www.linkedin.com/in/juan-jos%C3%A9-hidalgo-ya%C3%B1ez-854698b4/)
-#### 📨 Email: contacto@juan-hidalgo.es
+#### 📨 Email: juanhidalgoyanez@gmail.com
 ---
 ## 📝 ***Licencia***
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENCIA](./LICENCIA.md) para más detalles.
