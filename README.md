@@ -34,7 +34,7 @@ In addition, if you want to change your email service, you must modify your conf
 #### 🙋‍♂️ Name: Juan José Hidalgo
 #### 🐙 GitHub: https://github.com/Juan-Jose-Hidalgo
 #### 💼 Visit my profile on [LinkedIn](https://www.linkedin.com/in/juan-jos%C3%A9-hidalgo-ya%C3%B1ez-854698b4/)
-#### 📨 Email: contacto@juan-hidalgo.es
+#### 📨 Email: juanhidalgoyanez@gmail.com
 ---
 ## 📝 ***License***
 This project is licensed under the MIT License. See the file [LICENSE.md](./docs/LICENSE.md) for more details.
