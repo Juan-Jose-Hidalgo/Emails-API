@@ -27,17 +27,20 @@ const recipientEmail = process.env.RECIPIENT_EMAIL;
 export const sendEmail = async (name: string, email: string, subject: string, message: string): Promise<any> => {
     // Create the transporter with the required configuration.
     const transporter: Transporter = nodemailer.createTransport({
-        host: 'smtp.ionos.es',
-        port: 587,
+        service: 'gmail',
         auth: transporterAuth,
     });
 
     // Create the mail options object with the required fields.
     const mailOptions = {
-        from: email,
+        // from: email,
         to: recipientEmail,
         subject,
-        text: `Mensaje de ${name}: ${message}`
+        text: `
+        Nombre: ${name}
+        Email: ${email}
+
+        ${message}`
     };
 
     try {
@@ -48,6 +51,7 @@ export const sendEmail = async (name: string, email: string, subject: string, me
     } catch (error) {
         // If something goes wrong during the sending process, log the error and throw it.
         const errorMessage = 'Ha habido un error al enviar el correo electrónico';
+        console.error(error);
         throw new Error(errorMessage);
     }
 }
